@@ -1,4 +1,4 @@
-<h2> </h2> 
+<h2> {{showSignUp ? 'Sign Up' : 'Login'}} </h2> 
 <form>
   <div class="row">
     <div class="col-md-6">
@@ -6,17 +6,22 @@
       <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
       <label>Password</label>
       <input type="password" class="form-control" [(ngModel)]="password" name="password" />
+      <label>First Name</label>
+      <input type="text" class="form-control" [(ngModel)]="fname" name="fnamed" />
     </div>
     <div class="col-md-6"></div>
   </div>
   <br />
   <div class="row">
     <div class="col-md-6">
-      <button type="submit" class="btn btn-primary" (click)="login()">
+      <button *ngIf="!showSignUp" type="submit" class="btn btn-primary" (click)="login()">
         Submit
       </button>
-      <button type="submit" class="btn btn-secondary float-right" (click)="SignUp()">
+      <button *ngIf="showSignUp" type="submit" class="btn btn-primary" (click)="login()">
         SignUp
+      </button>
+      <button type="submit" class="btn btn-secondary float-right" (click)="toggleSignUp()">
+        {{ showSignUp ? 'Cancel' : 'SignUp'}}
       </button>
     </div>
   </div>
