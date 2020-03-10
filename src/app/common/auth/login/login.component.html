@@ -2,12 +2,19 @@
 <form>
   <div class="row">
     <div class="col-md-6">
-      <label>User Name</label>
+      <label>Admin User &nbsp; </label>
+      <input type="checkbox">
+      <br>
+      <select ng-ngModel="Taverns" ng-options="x.taverns for x in Taverns">
+
+      </select>
+      <br>
+
+      <input type="text" class="form-control" [(ngModel)]="tavern" name="tavernName" />
+      <label>Tavern Name</label>
       <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
       <label>Password</label>
       <input type="password" class="form-control" [(ngModel)]="password" name="password" />
-      <label>First Name</label>
-      <input type="text" class="form-control" [(ngModel)]="fname" name="fnamed" />
     </div>
     <div class="col-md-6"></div>
   </div>

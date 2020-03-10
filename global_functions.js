@@ -20,6 +20,9 @@ returnError = function(res, err, code) {
         error = err.message;
     }
     if (typeof code !== 'undefined') {
+        error = err;
+    }
+    if (typeof code !== 'undefined') {
         res.statusCode = code;
     }
     return res.json({ success: false, error: error });

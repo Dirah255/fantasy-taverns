@@ -10,6 +10,8 @@ export class LoginComponent {
     password = '';
     showSignUp = false;
     payload = '';
+    tavern = '';
+    name = 'Angular 5';
 
     constructor(private router: Router, private authService: AuthService) {}
 
@@ -25,18 +27,30 @@ export class LoginComponent {
                 console.log('username/password incorrect');
             },
         );
+        const Taverns = [{
+            Id: 1,
+            Name: 'Johns Tavern'
+          },
+          {
+            Id: 1,
+            Name: 'Moes Tavern'
+          },
+          {
+           Id: 1,
+            Name: 'Kates Tavern'
+          }];
     }
-
 
     toggleSignUp(): void {
         this.showSignUp = !this.showSignUp;
-        this.userName = ''
-        this.password = ''
+        this.userName = '';
+        this.password = '';
+        this.tavern
     }
 
     SignUp(): void {
-        const payload = {username: this.userName, password: this.password }      
-        console.log(payload)
+        const payload = {username: this.userName, password: this.password };
+        console.log(payload);
     }
 }
 
