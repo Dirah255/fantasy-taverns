@@ -1,19 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { LoginService, ITavern } from './login.service';
 
 @Component({
     templateUrl: './login.component.html',
+    // tslint:disable-next-line: component-selector
+    selector: 'my-app',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+    tlistreturned: any;
+
+    constructor(
+        private router: Router,
+        private authService: AuthService,
+        private loginService: LoginService) {}
+
     userName = '';
     password = '';
     showSignUp = false;
     payload = '';
     tavern = '';
-    name = 'Angular 5';
+    checkboxchecked = false;
+    tlist: ITavern[];
 
-    constructor(private router: Router, private authService: AuthService) {}
+      selected: any ;
+
+        // // tslint:disable-next-line: member-ordering
+        // name = 'Angular 5';
+        // // tslint:disable-next-line: member-ordering
+         // Taverns = [{
+          // Id: 1,
+          // Name: 'John\'s Tavern'
+        // },
+        // {
+          // Id: 1,
+          // Name: 'Moe\'s Tavern'
+        // },
+        // {
+        // Id: 1,
+          // Name: 'Kate\'s Tavern'
+       // }];
 
     login(): void {
         this.authService.login(this.userName, this.password).subscribe(
@@ -23,34 +50,40 @@ export class LoginComponent {
                     this.router.navigateByUrl('/home');
                 }
             },
-            (error) => {
+            (_error) => {
                 console.log('username/password incorrect');
             },
         );
-        const Taverns = [{
-            Id: 1,
-            Name: 'Johns Tavern'
-          },
-          {
-            Id: 1,
-            Name: 'Moes Tavern'
-          },
-          {
-           Id: 1,
-            Name: 'Kates Tavern'
-          }];
+
     }
 
     toggleSignUp(): void {
         this.showSignUp = !this.showSignUp;
         this.userName = '';
         this.password = '';
-        this.tavern
     }
 
     SignUp(): void {
-        const payload = {username: this.userName, password: this.password };
+        const payload = {username: this.userName, password: this.password, tavern: this.tavern};
         console.log(payload);
     }
+
+    Checkbox(): void {
+        this.checkboxchecked = !this.checkboxchecked;
+        console.log('Box has been clicked');
+
+    }
+
+    ngOnInit(): void {
+        this.loginService.getTaverns()
+        .subscribe((tlist) => {this.tlist = tlist;
+        });
+
+    }
+
+    // this.tlist = tlistreturned
+    //console.log(tlist)
+
 }
+
 

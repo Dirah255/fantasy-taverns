@@ -162,3 +162,29 @@ const login = async function(req, res) {
 };
 
 module.exports.login = login;
+
+const tavernlist = async function (req, res){
+
+    res.setHeader('Content-Type','application/json');
+    let tlist;
+
+    const pool = await poolPromise;
+
+    try{
+        tlist = await pool
+        .request()
+        .query(
+            'Select TavernName from Taverns' 
+        );
+        tlist = tlist.recordset; 
+        console.log(tlist.recordset);
+    } catch (e) {
+        returnError (res, e, 'No Tavern List');
+    }
+    return res.json(tlist);
+    
+}
+    module.exports.tavernlist = tavernlist;
+
+
+

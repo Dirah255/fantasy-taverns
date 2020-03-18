@@ -5,6 +5,8 @@ import { LoginComponent } from './common/auth/login/login.component';
 import { HomeComponent } from './home.component';
 import { AuthGuard } from './common/auth/auth.guard';
 
+// add tavers path
+
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },

@@ -3,15 +3,24 @@
   <div class="row">
     <div class="col-md-6">
       <label>Admin User &nbsp; </label>
-      <input type="checkbox">
+      <input type="checkbox"  (click)="Checkbox()">
       <br>
-      <select ng-ngModel="Taverns" ng-options="x.taverns for x in Taverns">
-
-      </select>
+      <label  *ngIf="checkboxchecked"> Tavern Name</label>
+      <input *ngIf="checkboxchecked" type="text" class="form-control" [(ngModel)]="tavern" name="tavernName" />
+      
       <br>
+      <ul>
+      <li *ngFor="let t of tlist">
+          <div class="row">
+            {{tlist}}
+          </div>
+      </li>
+      </ul>
+    
 
-      <input type="text" class="form-control" [(ngModel)]="tavern" name="tavernName" />
-      <label>Tavern Name</label>
+
+
+      <label>User Name</label>
       <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
       <label>Password</label>
       <input type="password" class="form-control" [(ngModel)]="password" name="password" />
@@ -20,11 +29,25 @@
   </div>
   <br />
   <div class="row">
+    
+  <div *ngIf="showSignUp" class="rom col-md-6">
+    <label> Email</label>
+    <input type="text" class="form-control" [(ngModel)]="tavern" name="emailAddress"/>
+    <label> First Name</label>
+    <input type="text" class="form-control" [(ngModel)]="tavern" name="fname"/>
+    <label> Last Name</label>
+    <input type="text" class="form-control" [(ngModel)]="tavern" name="lname"/>
+    <label> Phone</label>
+    <input type="text" class="form-control" [(ngModel)]="tavern" name="phonenumb"/>
+  </div>
+
+  <h3></h3>
+
     <div class="col-md-6">
       <button *ngIf="!showSignUp" type="submit" class="btn btn-primary" (click)="login()">
         Submit
       </button>
-      <button *ngIf="showSignUp" type="submit" class="btn btn-primary" (click)="login()">
+      <button *ngIf="showSignUp" type="submit" class="btn btn-primary" (click)="SignUp()">
         SignUp
       </button>
       <button type="submit" class="btn btn-secondary float-right" (click)="toggleSignUp()">
