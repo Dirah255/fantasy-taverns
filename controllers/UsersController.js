@@ -176,12 +176,12 @@ const tavernlist = async function (req, res){
         .query(
             'Select TavernName from Taverns' 
         );
-        tlist = tlist.recordset; 
+        tavlist = tlist.recordset; 
         console.log(tlist.recordset);
     } catch (e) {
         returnError (res, e, 'No Tavern List');
     }
-    return res.json(tlist);
+    return res.json(tavlist);
     
 }
     module.exports.tavernlist = tavernlist;

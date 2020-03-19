@@ -15,6 +15,6 @@ export class LoginService {
     constructor(private http: HttpClient) {}
 
     getTaverns(): Observable<ITavern[]> {
-        return this.http.get<ITavern[]>('http://localhost:3000/login?TavernName');
+        return this.http.get<ITavern[]>('http://localhost:3000/login');
     }
 }

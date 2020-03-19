@@ -76,13 +76,13 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginService.getTaverns()
-        .subscribe((tlist) => {this.tlist = tlist;
+        .subscribe((tavlist) => {this.tlist = tavlist;
+            console.log(this.tlist);
         });
 
     }
 
     // this.tlist = tlistreturned
-    //console.log(tlist)
 
 }
 
