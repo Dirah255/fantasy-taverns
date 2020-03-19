@@ -9,16 +9,12 @@
       <input *ngIf="checkboxchecked" type="text" class="form-control" [(ngModel)]="tavern" name="tavernName" />
       
       <br>
-      <ul>
-      <li *ngFor="let t of tlist" class="list-group-item">
-          <div class="row">
-            {{t.Name}}
-          </div>
-      </li>
-      </ul>
-    
-
-
+      <select [(ngModel)] ="selected" *ngIf="!showSignUp" name="selected" class="form-control" > 
+        <option [ngValue]="undefined" disabled>Select Any </option>
+          <option *ngFor="let t of tlist" 
+          [ngValue]="tlist"> {{t.Name}} </option>
+        </select>
+        <h3>{{selected | json}} </h3>
 
       <label>User Name</label>
       <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
