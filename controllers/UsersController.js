@@ -17,14 +17,16 @@ const hashPassword = async function(userInfo) {
     if (err) {
         throwError(err.message);
     }
+    console.log('password hash')
     return hash;
 };
 
 const createUser = async function(userInfo) {
     const pool = await poolPromise;
     let result;
+    console.log('made it into user')
     const roleId = parseInt(userInfo.Tavern.Id) === 0 ? 1 : 2;
-
+    Console.log('Made it to CreateUser');
     if (parseInt(userInfo.Tavern.Id) === 0) {
         try {
             tavernResult = await pool
@@ -39,6 +41,7 @@ const createUser = async function(userInfo) {
         }
     }
     userInfo.Password = await hashPassword(userInfo);
+    Console.log('Trying to Insert')
 
     try {
         result = await pool
@@ -61,14 +64,17 @@ module.exports.createUser = createUser;
 create = async function(req, res) {
     res.setHeader('ContentType', 'application/json');
     const body = req.body;
+    console.log('Got to create')
 
     if (!body.Password) {
         return returnError(res, 'Please enter a password to register', 422);
     }
     let err, user;
+    console.log(body)
 
     [err, user] = await executeOrThrow(createUser(body));
     if (err) {
+        console.log('error for inserting')
         return returnError(res, err, 422);
     }
 
@@ -174,7 +180,7 @@ const tavernlist = async function (req, res){
         tlist = await pool
         .request()
         .query(
-            'Select TavernName from Taverns' 
+            'Select TavernName, Id from Taverns' 
         );
         tavlist = tlist.recordset; 
         console.log(tlist.recordset);
@@ -185,6 +191,4 @@ const tavernlist = async function (req, res){
     
 }
     module.exports.tavernlist = tavernlist;
-
-
 

@@ -83,6 +83,10 @@ export class AuthService {
         }
     }
 
+    signup(payload: any): Observable<any> {
+        return this.http.post<any>('http://localhost:3000/users', payload);
+    }
+
 
 
 }

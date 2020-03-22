@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface ITavern {
-    Name: string;
+    TavernName: string;
+    ID: number;
 }
 
 @Injectable({
@@ -17,4 +18,5 @@ export class LoginService {
     getTaverns(): Observable<ITavern[]> {
         return this.http.get<ITavern[]>('http://localhost:3000/login');
     }
+
 }

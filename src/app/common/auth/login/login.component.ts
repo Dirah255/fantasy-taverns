@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginService, ITavern } from './login.service';
 
+
 @Component({
     templateUrl: './login.component.html',
     // tslint:disable-next-line: component-selector
     selector: 'my-app',
 })
 export class LoginComponent implements OnInit {
-    tlistreturned: any;
 
     constructor(
         private router: Router,
@@ -18,29 +18,13 @@ export class LoginComponent implements OnInit {
 
     userName = '';
     password = '';
+    tavernName = '';
     showSignUp = false;
     payload = '';
-    tavern = '';
     checkboxchecked = false;
     tlist: ITavern[];
-
-      selected: any ;
-
-        // // tslint:disable-next-line: member-ordering
-        // name = 'Angular 5';
-        // // tslint:disable-next-line: member-ordering
-         // Taverns = [{
-          // Id: 1,
-          // Name: 'John\'s Tavern'
-        // },
-        // {
-          // Id: 1,
-          // Name: 'Moe\'s Tavern'
-        // },
-        // {
-        // Id: 1,
-          // Name: 'Kate\'s Tavern'
-       // }];
+    selected: any;
+    Tavern: [];
 
     login(): void {
         this.authService.login(this.userName, this.password).subscribe(
@@ -54,18 +38,13 @@ export class LoginComponent implements OnInit {
                 console.log('username/password incorrect');
             },
         );
-
     }
+
 
     toggleSignUp(): void {
         this.showSignUp = !this.showSignUp;
         this.userName = '';
         this.password = '';
-    }
-
-    SignUp(): void {
-        const payload = {username: this.userName, password: this.password, tavern: this.tavern};
-        console.log(payload);
     }
 
     Checkbox(): void {
@@ -82,7 +61,24 @@ export class LoginComponent implements OnInit {
 
     }
 
-    // this.tlist = tlistreturned
+    SignUp(): void {
+
+        const payload = {
+            UserName: this.userName,
+            Password: this.password,
+            Tavern: [
+                {TavernName: this.selected,
+                Id: 2}
+            ]
+        };
+
+        console.log(payload);
+
+        this.authService.signup(payload)
+        .subscribe((_create) => {this.router.navigateByUrl('/login'); }
+
+        );
+    }
 
 }
 

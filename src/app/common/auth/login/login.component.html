@@ -6,15 +6,13 @@
       <input type="checkbox"  (click)="Checkbox()">
       <br>
       <label  *ngIf="checkboxchecked"> Tavern Name</label>
-      <input *ngIf="checkboxchecked" type="text" class="form-control" [(ngModel)]="tavern" name="tavernName" />
+      <input *ngIf="checkboxchecked" type="text" class="form-control" [(ngModel)]="tavernName" name="tavernName" />
       
       <br>
-      <select [(ngModel)] ="selected" *ngIf="!showSignUp" name="selected" class="form-control" > 
+      <select [(ngModel)] ="selected" *ngIf="showSignUp" name="TavernName" class="form-control" > 
         <option [ngValue]="undefined" disabled>Select Any </option>
-          <option *ngFor="let t of tlist" 
-          [ngValue]="tlist"> {{t.Name}} </option>
+          <option *ngFor="let t of tlist" [ngValue]="t.TavernName" > {{t.TavernName}}</option>
         </select>
-        <h3>{{selected | json}} </h3>
 
       <label>User Name</label>
       <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
@@ -25,17 +23,6 @@
   </div>
   <br />
   <div class="row">
-    
-  <div *ngIf="showSignUp" class="rom col-md-6">
-    <label> Email</label>
-    <input type="text" class="form-control" [(ngModel)]="tavern" name="emailAddress"/>
-    <label> First Name</label>
-    <input type="text" class="form-control" [(ngModel)]="tavern" name="fname"/>
-    <label> Last Name</label>
-    <input type="text" class="form-control" [(ngModel)]="tavern" name="lname"/>
-    <label> Phone</label>
-    <input type="text" class="form-control" [(ngModel)]="tavern" name="phonenumb"/>
-  </div>
 
   <h3></h3>
 
