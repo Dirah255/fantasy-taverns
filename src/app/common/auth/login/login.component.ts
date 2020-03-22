@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     checkboxchecked = false;
     tlist: ITavern[];
     selected: any;
-    Tavern: [];
+    Tavern: {};
 
     login(): void {
         this.authService.login(this.userName, this.password).subscribe(
@@ -66,10 +66,10 @@ export class LoginComponent implements OnInit {
         const payload = {
             UserName: this.userName,
             Password: this.password,
-            Tavern: [
-                {TavernName: this.selected,
-                Id: 2}
-            ]
+            Tavern: {
+                TavernName: this.selected,
+                Id: 2
+            }
         };
 
         console.log(payload);
