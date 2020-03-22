@@ -69,6 +69,7 @@ app.use((req, res, next) => {
 app.post('/users', userController.create);
 app.post('/login', userController.login);
 app.get('/login', userController.tavernlist);
+app.get('/my-tavern', TavernController.ge);
 
 console.log('SERVER READY');
 module.exports = app;
