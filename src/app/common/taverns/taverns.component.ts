@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { constructor } from 'assert';
-import { TavernService } from './taverns.service';
+import { TavernService, IRoom } from './taverns.service';
 
 @Component({
   selector: 'app-taverns.component',
@@ -14,11 +14,12 @@ export class TavernsComponent implements OnInit {
 
   TavernName: 'Joe Place';
   Id: number;
+  rlist: IRoom[];
 
   ngOnInit(): void {
-    this.tavernService.getTavernName()
-    .subscribe((tavlist) => {this.tlist = tavlist;
-        console.log(this.tlist);
+    this.tavernService.getRoomName()
+    .subscribe((roomlist) => {this.rlist = roomlist;
+        console.log(this.rlist);
     });
 
 }
