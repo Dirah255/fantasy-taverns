@@ -17,7 +17,6 @@ export class TavernsComponent implements OnInit {
   rlist: IRoom[];
 
   ngOnInit(): void {
-    const taken = Token;
     this.tavernService.getRoomName()
     .subscribe((rmlist) => {this.rlist = rmlist;
       console.log(this.rlist);
