@@ -15,7 +15,6 @@ export class TavernsComponent implements OnInit {
   TavernName: '';
   Id: number;
   rlist: IRoom[];
-  Logintoken: ILoginResponse[];
 
   ngOnInit(): void {
     const taken = Token;
