@@ -1,0 +1,37 @@
+<h2> Sign Up </h2> 
+<form>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Admin User &nbsp; </label>
+      <input type="checkbox"  (click)="Checkbox()">
+      <br>
+      <label  *ngIf="checkboxchecked"> Tavern Name</label>
+      <input *ngIf="checkboxchecked" type="text" class="form-control" [(ngModel)]="tavernName" name="tavernName" />
+
+        <select [(ngModel)] ="selected" name="selected" class="form-control" > 
+          <option [ngValue]="undefined" disabled>Select Tavern </option>
+            <option *ngFor="let t of tlist" [ngValue]="t"> {{t.TavernName}}</option>
+          </select>
+
+      <label>User Name</label>
+      <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
+      <label>Password</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password" />
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+  <br />
+  <div class="row">
+
+  <h3></h3>
+
+    <div class="col-md-6">
+      <button  type="submit" class="btn btn-primary" (click)="SignUp()">
+        SignUp
+      </button>
+      <button type="submit" class="btn btn-secondary float-right" (click)="Cancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

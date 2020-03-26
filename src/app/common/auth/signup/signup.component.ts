@@ -1,64 +1,47 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { LoginService, ITavern } from './login.service';
+import { ITavern, LoginService } from '../login/login.service';
+
 
 
 
 @Component({
-    templateUrl: './login.component.html',
+    templateUrl: './signup.component.html',
     // tslint:disable-next-line: component-selector
     selector: 'my-app',
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
 
     constructor(
         private router: Router,
-        private authService: AuthService,
-        private loginService: LoginService) {}
+        private loginService: LoginService,
+        private authService: AuthService) {}
 
     userName = '';
-    password = '';
     tavernName = '';
-    showSignUp = false;
+    password = '';
     payload = '';
     checkboxchecked = false;
     tlist: ITavern[];
     selected: any;
     Tavern: {};
-    t: any;
 
-    login(): void {
-        this.authService.login(this.userName, this.password).subscribe(
-            (response) => {
-                if (response.success) {
-                    console.log('successful login');
-                    this.router.navigateByUrl('/my-tavern');
-                }
-            },
-            (_error) => {
-                console.log('username/password incorrect');
-            },
-        );
+    ngOnInit(): void {
+      this.loginService.getTaverns()
+      .subscribe((tavlist) => {this.tlist = tavlist;
+          console.log(this.tlist);
+      });
     }
 
-
-    SignUpHTML(): void {
-        this.router.navigateByUrl('/signup');
+    Cancel(): void {
+        this.router.navigateByUrl('/login');
     }
 
     Checkbox(): void {
         this.checkboxchecked = !this.checkboxchecked;
         console.log('Box has been clicked');
-
-    }
-
-    ngOnInit(): void {
-        this.loginService.getTaverns()
-        .subscribe((tavlist) => {this.tlist = tavlist;
-            console.log(this.tlist);
-        });
 
     }
 
@@ -86,5 +69,6 @@ export class LoginComponent implements OnInit {
     }
 
 }
+
 
 

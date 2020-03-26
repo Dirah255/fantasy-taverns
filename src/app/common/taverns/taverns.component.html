@@ -1,5 +1,19 @@
-<h2>{{TavernName}}</h2>
+<h2 name="TavernName">{{TavernName}}</h2>
 
+<h2>Tavern Name</h2>
 <ul class="list-group">
-    <li *ngFor="let r of rlist" class="list-group-item"> {{r}}</li>
+    <div class="row">
+        <div>
+            <li *ngFor="let r of rlist"  class="list-group-item"> {{r.RoomName}} </li>
+        </div>
+        <div class="float-right">
+            <li *ngFor="let r of rlist"  class="list-group-item"> $ {{r.DailyRate}} </li>
+        </div>
+    </div>
+</ul>
+
+<ul>
+<div>
+    <li *ngFor="let i of Logintoken"  class="list-group-item"> {{i.token}} </li>
+</div>
 </ul>

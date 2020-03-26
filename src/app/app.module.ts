@@ -13,11 +13,12 @@ import { LoginComponent } from './common/auth/login/login.component';
 import { TokenInterceptor } from './common/auth/token.interceptor';
 import { HomeComponent } from './home.component';
 import { TavernsComponent } from './common/taverns/taverns.component';
+import { SignupComponent } from './common/auth/signup/signup.component';
 
 
 @NgModule({
     bootstrap: [AppComponent],
-    declarations: [AppComponent, LoginComponent, HomeComponent, TavernsComponent],
+    declarations: [AppComponent, LoginComponent, HomeComponent, TavernsComponent, SignupComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

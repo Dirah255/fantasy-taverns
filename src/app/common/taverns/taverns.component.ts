@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { constructor } from 'assert';
 import { TavernService, IRoom } from './taverns.service';
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 
 @Component({
   selector: 'app-taverns.component',
@@ -12,19 +12,16 @@ export class TavernsComponent implements OnInit {
   constructor(private tavernService: TavernService) { }
   // Depedning on
 
-  TavernName: 'Joe Place';
+  TavernName: '';
   Id: number;
   rlist: IRoom[];
+  Logintoken: ILoginResponse[];
 
   ngOnInit(): void {
+    const taken = Token;
     this.tavernService.getRoomName()
-    .subscribe((roomlist) => {this.rlist = roomlist;
-        console.log(this.rlist);
+    .subscribe((rmlist) => {this.rlist = rmlist;
+      console.log(this.rlist);
     });
-
-}
-
-
-
-
+    }
 }

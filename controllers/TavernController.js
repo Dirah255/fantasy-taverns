@@ -8,6 +8,7 @@ const roomlist = async function (req, res){
 
     res.setHeader('Content-Type','application/json');
     let rlist;
+    console.log('Got here');
 
     const pool = await poolPromise;
 
@@ -17,12 +18,12 @@ const roomlist = async function (req, res){
         .query(
             'Select * from Rooms Where TavernID = 1' 
         );
-        roomlist = rlist.recordset; 
+        rmlist = rlist.recordset; 
         console.log(rlist.recordset);
     } catch (e) {
         returnError (res, e, 'No Room List');
     }
-    return res.json(roomlist);
+    return res.json(rmlist);
     
 }
     module.exports.roomlist = roomlist;

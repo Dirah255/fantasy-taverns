@@ -26,7 +26,7 @@ const createUser = async function(userInfo) {
     let result;
     console.log('made it into user')
     const roleId = parseInt(userInfo.Tavern.Id) === 0 ? 1 : 2;
-    Console.log('Made it to CreateUser');
+    console.log('Made it to CreateUser');
     if (parseInt(userInfo.Tavern.Id) === 0) {
         try {
             tavernResult = await pool
@@ -41,7 +41,7 @@ const createUser = async function(userInfo) {
         }
     }
     userInfo.Password = await hashPassword(userInfo);
-    Console.log('Trying to Insert')
+    console.log('Trying to Insert')
 
     try {
         result = await pool
