@@ -1,0 +1,27 @@
+<h2>Create Room</h2>
+
+<form #form="ngForm" (submit)="SaveRoom(form)" class="col-md-6">
+    <div>
+    <label>Room Name</label> 
+    <br>
+    <input type="text" class="form-conftrol" name="RoomName" ngModel #RoomName=ngModel required maxlength=100>
+    <div *ngIf="RoomName.invalid && (RoomName.dirty || RoomName.touched)" class="">
+        <div *ngIf= "Rate.errors.required">
+            Room Name is Required.
+        </div>
+    </div>
+    <br>
+    <label> Daily Rate</label>
+    <br>
+    <div>
+    <input type="number" class="form-conftrol" name="DailyRate" ngModel #Rate=ngModel  required>
+        <div *ngIf="Rate.invalid && (Rate.dirty || Rate.touched)">
+            <div *ngIf= "Rate.errors.required">
+                Rate is Required.
+            </div>
+        </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success" required>Save</button>
+    </div>
+</form>

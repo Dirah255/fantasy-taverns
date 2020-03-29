@@ -71,6 +71,8 @@ app.post('/users', userController.create);
 app.post('/login', userController.login);
 app.get('/login', userController.tavernlist);
 app.get('/my-tavern', passport.authenticate('jwt',{session: false}),TavernController.roomlist);
+app.get('/room', passport.authenticate('jwt',{session: false}),TavernController.roomdetails);
+app.post('/room', passport.authenticate('jwt',{session: false}),TavernController.newroom);
 
 
 console.log('SERVER READY');

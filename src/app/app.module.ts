@@ -14,17 +14,21 @@ import { TokenInterceptor } from './common/auth/token.interceptor';
 import { HomeComponent } from './home.component';
 import { TavernsComponent } from './common/taverns/taverns.component';
 import { SignupComponent } from './common/auth/signup/signup.component';
+import { RoomComponent } from './common/taverns/room/room.component';
+import { TavernsRoutingModule } from './common/taverns/taverns-routing.module';
 
 
 @NgModule({
     bootstrap: [AppComponent],
-    declarations: [AppComponent, LoginComponent, HomeComponent, TavernsComponent, SignupComponent],
+    declarations: [AppComponent, LoginComponent, HomeComponent, TavernsComponent, SignupComponent, RoomComponent],
     imports: [
         BrowserModule,
+        FormsModule,
         BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
         NgbModule,
+        TavernsRoutingModule,
         AppRoutingModule,
         CookieModule.forRoot(),
     ],
