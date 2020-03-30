@@ -26,19 +26,6 @@
 <ul class="list-group">
     <div>
         <div>
-            <li *ngFor="let r of rlist"  
-            
-            class="list-group-item d-flex justify-content-between" [value]="r.ID"> 
-                <p>{{r.RoomName}}</p> 
-                <p>$ {{r.DailyRate}} </p> 
-            </li>
-        </div>
-    </div>
-</ul>
-
-<ul class="list-group">
-    <div>
-        <div>
             <li *ngFor="let r of rlist"   
             class="list-group-item d-flex justify-content-between"
             [routerLink]="'/room/' + r.ID"

@@ -10,9 +10,18 @@ import { Router } from '@angular/router';
 })
 export class RoomComponent implements OnInit {
 
+  isNew: boolean;
+
+  room: IRoom = {
+    RoomName: '',
+    ID: 0,
+    DailyRate: 0,
+  };
+
   constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit() {
+
   }
 
   SaveRoom(form: NgForm): void {
